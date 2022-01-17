@@ -14,7 +14,7 @@ import com.alvarezaguilera.javatest.model.PriceJpa;
 public interface PriceRepository extends CrudRepository<PriceJpa, Long> {
 	
 	@Query("SELECT p "
-			+ "FROM Price p "
+			+ "FROM PriceJpa p "
 			+ "WHERE p.productId = :productId "
 			+ "AND p.brandId = :brandId "
 			+ "AND p.startDate >= :date "
