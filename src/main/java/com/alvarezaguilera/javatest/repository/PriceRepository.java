@@ -8,10 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.alvarezaguilera.javatest.model.Price;
+import com.alvarezaguilera.javatest.model.PriceJpa;
 
 @Repository
-public interface PriceRepository extends CrudRepository<Price, Long> {
+public interface PriceRepository extends CrudRepository<PriceJpa, Long> {
 	
 	@Query("SELECT p "
 			+ "FROM Price p "
@@ -20,7 +20,7 @@ public interface PriceRepository extends CrudRepository<Price, Long> {
 			+ "AND p.startDate >= :date "
 			+ "AND p.endDate <= :date "
 			+ "ORDER BY p.priority DESC")
-	List<Price> findProductsByParameters(@Param("date")LocalDateTime date, @Param("productId") Integer productId, 
+	List<PriceJpa> findProductPriceByParameters(@Param("date")LocalDateTime date, @Param("productId") Integer productId, 
 			@Param("brandId") Integer brandId);
 
 }
