@@ -2,16 +2,16 @@ package com.alvarezaguilera.javatest.converter;
 
 import org.springframework.stereotype.Component;
 
-import com.alvarezaguilera.javatest.model.PriceDto;
-import com.alvarezaguilera.javatest.model.PriceJpa;
+import com.alvarezaguilera.javatest.model.ProductPriceDto;
+import com.alvarezaguilera.javatest.model.ProductPriceJpa;
 
 @Component
-public class PriceConverterImpl implements PriceConverter{
+public class PriceConverterImpl implements ProductPriceConverter{
 
 	@Override
-	public PriceDto fromPriceToProceDto(PriceJpa jpa) {
+	public ProductPriceDto fromProductPriceJpaToProductPriceDto(ProductPriceJpa jpa) {
 		if(jpa != null) {
-			PriceDto dto = new PriceDto();
+			ProductPriceDto dto = new ProductPriceDto();
 			dto.setProductId(jpa.getProductId());
 			dto.setBrandId(jpa.getBrandId());
 			dto.setPricelist(jpa.getPricelist());

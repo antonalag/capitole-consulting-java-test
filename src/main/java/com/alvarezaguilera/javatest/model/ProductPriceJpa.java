@@ -13,7 +13,7 @@ import com.alvarezaguilera.javatest.util.Constants;
 
 @Entity
 @Table(name = Constants.PRICE_TABLE_NAME)
-public class PriceJpa {
+public class ProductPriceJpa {
 
 	@Id
 	@Column(name = Constants.ID_COLUMN_NAME)

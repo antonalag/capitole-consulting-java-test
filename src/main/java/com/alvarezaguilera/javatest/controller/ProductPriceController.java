@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alvarezaguilera.javatest.model.PriceDto;
-import com.alvarezaguilera.javatest.service.PriceService;
+import com.alvarezaguilera.javatest.model.ProductPriceDto;
+import com.alvarezaguilera.javatest.service.ProductPriceService;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @RestController
 @RequestMapping("/")
 @Validated
-public class PriceController {
+public class ProductPriceController {
 
 	@Autowired
-	private PriceService priceService;
+	private ProductPriceService priceService;
 	
 	@GetMapping(path = "/product-price", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<PriceDto> productPrice(
+	public ResponseEntity<ProductPriceDto> productPrice(
 			@RequestParam(value = "date") 
 			@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 			@NotBlank
@@ -46,7 +46,7 @@ public class PriceController {
 			@Valid
 			Integer brandId
 			) {
-		PriceDto priceDto = priceService.getProductPriceByParameters(null, null, null);
+		ProductPriceDto priceDto = priceService.getProductPriceByParameters(null, null, null);
 		return priceDto != null ? ResponseEntity.ok(priceDto) : ResponseEntity.noContent().build();
 	}
 	

@@ -8,37 +8,37 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alvarezaguilera.javatest.converter.PriceConverter;
+import com.alvarezaguilera.javatest.converter.ProductPriceConverter;
 import com.alvarezaguilera.javatest.exception.NotFoundException;
-import com.alvarezaguilera.javatest.model.PriceDto;
-import com.alvarezaguilera.javatest.model.PriceJpa;
-import com.alvarezaguilera.javatest.repository.PriceRepository;
+import com.alvarezaguilera.javatest.model.ProductPriceDto;
+import com.alvarezaguilera.javatest.model.ProductPriceJpa;
+import com.alvarezaguilera.javatest.repository.ProductPriceRepository;
 
 @Service
-public class PriceServiceImpl implements PriceService {
+public class ProductPriceServiceImpl implements ProductPriceService {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(PriceServiceImpl.class);
-	
-	@Autowired
-	private PriceRepository priceRepository;
+	private static final Logger LOG = LoggerFactory.getLogger(ProductPriceServiceImpl.class);
 	
 	@Autowired
-	private PriceConverter priceConverter;
+	private ProductPriceRepository priceRepository;
+	
+	@Autowired
+	private ProductPriceConverter priceConverter;
 
 	@Override
-	public PriceDto getProductPriceByParameters(LocalDateTime date, Integer productId, Integer brandId) {
+	public ProductPriceDto getProductPriceByParameters(LocalDateTime date, Integer productId, Integer brandId) {
 		LOG.info("Getting product price by date: {}, product id: {} and brand id: {}", date, productId, brandId);
 		validate(productId, brandId);
-		List<PriceJpa> productPriceList = priceRepository.findProductPriceByParameters(date, productId, brandId);
+		List<ProductPriceJpa> productPriceList = priceRepository.findProductPriceByParameters(date, productId, brandId);
 		
 		if(productPriceList.isEmpty()) {
 			LOG.info("There is no product price for the parameters date: {}, product id: {}, brand id: {}", date, productId, brandId);
 			return null;
 		}
 		
-		PriceJpa productPrice = productPriceList.stream().findFirst().get();
+		ProductPriceJpa productPrice = productPriceList.stream().findFirst().get();
 		
-		return priceConverter.fromPriceToProceDto(productPrice);
+		return priceConverter.fromProductPriceJpaToProductPriceDto(productPrice);
 		
 	}
 	

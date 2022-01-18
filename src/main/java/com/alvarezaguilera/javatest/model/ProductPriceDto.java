@@ -3,7 +3,7 @@ package com.alvarezaguilera.javatest.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class PriceDto {
+public class ProductPriceDto {
 	
 	private Integer productId;
 	private Integer brandId;
