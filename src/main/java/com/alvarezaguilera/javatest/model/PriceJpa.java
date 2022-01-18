@@ -19,7 +19,7 @@ public class PriceJpa {
 	@Column(name = Constants.ID_COLUMN_NAME)
 	private Long id;
 	@Column(name = Constants.BRAND_ID_COLUMN_NAME)
-	private int brandId;
+	private Integer brandId;
 	@Column(name = Constants.START_DATE_COLUMN_NAME)
 	private LocalDateTime startDate;
 	@Column(name = Constants.END_DATE_COLUMN_NAME)
@@ -43,11 +43,11 @@ public class PriceJpa {
 		this.id = id;
 	}
 
-	public int getBrandId() {
+	public Integer getBrandId() {
 		return brandId;
 	}
 
-	public void setBrandId(int brandId) {
+	public void setBrandId(Integer brandId) {
 		this.brandId = brandId;
 	}
 

@@ -22,5 +22,9 @@ public interface PriceRepository extends CrudRepository<PriceJpa, Long> {
 			+ "ORDER BY p.priority DESC")
 	List<PriceJpa> findProductPriceByParameters(@Param("date")LocalDateTime date, @Param("productId") Integer productId, 
 			@Param("brandId") Integer brandId);
+	
+	boolean existsByProductId(Integer productId);
+	
+	boolean existsByBrandId(Integer brandId);
 
 }
