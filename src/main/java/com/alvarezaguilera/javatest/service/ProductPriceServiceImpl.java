@@ -42,6 +42,11 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 		
 	}
 	
+	/**
+	 * Checks if a product and a brand exist in the price table
+	 * @param productId product id
+	 * @param brandId brand id
+	 */
 	private void validate(Integer productId, Integer brandId) {
 		boolean productExists = priceRepository.existsByProductId(productId);
 		

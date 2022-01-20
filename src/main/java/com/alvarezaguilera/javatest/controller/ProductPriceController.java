@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -29,24 +30,18 @@ public class ProductPriceController {
 	
 	@GetMapping(path = "/product-price", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ProductPriceDto> productPrice(
-			@RequestParam(value = "date") 
-			@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-			@NotBlank
-			@NotNull
+			@RequestParam(value = "date", required = true) 
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 			@Valid
 			LocalDateTime date,
-			@RequestParam(value = "productId")
-			@NotBlank
-			@NotNull
+			@RequestParam(value = "productId", required = true)
 			@Valid
 			Integer productId,
-			@RequestParam(value = "brandId")
-			@NotBlank
-			@NotNull
+			@RequestParam(value = "brandId", required = true)
 			@Valid
 			Integer brandId
 			) {
-		ProductPriceDto priceDto = priceService.getProductPriceByParameters(null, null, null);
+		ProductPriceDto priceDto = priceService.getProductPriceByParameters(date, productId, brandId);
 		return priceDto != null ? ResponseEntity.ok(priceDto) : ResponseEntity.noContent().build();
 	}
 	
