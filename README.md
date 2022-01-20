@@ -16,3 +16,5 @@ Ejemplo resultado de la petición al endpoint:
     "endDate": "2020-12-31T23:59:59",
     "price": 38.95
 }**
+
+Como comentario, decir que para estos casos no suelo realizar numerosos commits, tal como se dice en la prueba. Realizo un commit en base a la consecución de la funcionalidad que esté desarrollando.
