@@ -1,6 +1,5 @@
 package com.alvarezaguilera.javatest.errorhandling;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
